@@ -9,7 +9,9 @@ module odd_clk_div_7 (
   always @(posedge clk or negedge rst_n) begin
     if(!rst_n)
       ctr <= 0;
-    else if (ctr == 6)
+	  else if (ctr == 6) 
+	  // for divide by 5 clock, change ctr == 6 to 4
+	  // for divide by 3 clock, change ctr == 6 to 2
       ctr <= 0;
     else
       ctr <= ctr + 1;
@@ -19,7 +21,9 @@ module odd_clk_div_7 (
   reg ff1, ff2;
   
   assign ff1_en = (ctr == 0) ? 1 : 0;
-  assign ff2_en = (ctr == 4) ? 1 : 0;
+  assign ff2_en = (ctr == 4) ? 1 : 0; 
+  // for divide by 5 clock, change ctr == 4 to 3
+  // for divide by 3 clock, change ctr == 4 to 2
   
   always @(posedge clk or negedge rst_n) begin
     if (!rst_n) begin
